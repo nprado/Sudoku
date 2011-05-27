@@ -31,7 +31,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ResolverActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="ResolverPassos">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+O"/>
@@ -46,12 +46,12 @@
             <Property name="text" type="java.lang.String" value="Help"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="Sobre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sobre"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SobreActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -119,15 +119,105 @@
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="9" rowCount="9">
-                <Column editable="true" title="" type="java.lang.Integer"/>
-                <Column editable="true" title="" type="java.lang.Integer"/>
-                <Column editable="true" title="" type="java.lang.Integer"/>
-                <Column editable="true" title="" type="java.lang.Integer"/>
-                <Column editable="true" title="" type="java.lang.Integer"/>
-                <Column editable="true" title="" type="java.lang.Integer"/>
-                <Column editable="true" title="" type="java.lang.Integer"/>
-                <Column editable="true" title="" type="java.lang.Integer"/>
-                <Column editable="true" title="" type="java.lang.Integer"/>
+                <Column editable="true" title="" type="java.lang.Integer">
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="4"/>
+                  <Data value="6"/>
+                  <Data value="9"/>
+                  <Data value="null"/>
+                  <Data value="1"/>
+                  <Data value="3"/>
+                </Column>
+                <Column editable="true" title="" type="java.lang.Integer">
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="5"/>
+                  <Data value="2"/>
+                  <Data value="7"/>
+                  <Data value="9"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                </Column>
+                <Column editable="true" title="" type="java.lang.Integer">
+                  <Data value="7"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="1"/>
+                  <Data value="null"/>
+                  <Data value="8"/>
+                  <Data value="null"/>
+                  <Data value="2"/>
+                  <Data value="null"/>
+                </Column>
+                <Column editable="true" title="" type="java.lang.Integer">
+                  <Data value="null"/>
+                  <Data value="6"/>
+                  <Data value="8"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                </Column>
+                <Column editable="true" title="" type="java.lang.Integer">
+                  <Data value="4"/>
+                  <Data value="null"/>
+                  <Data value="3"/>
+                  <Data value="2"/>
+                  <Data value="null"/>
+                  <Data value="6"/>
+                  <Data value="5"/>
+                  <Data value="null"/>
+                  <Data value="9"/>
+                </Column>
+                <Column editable="true" title="" type="java.lang.Integer">
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="8"/>
+                  <Data value="3"/>
+                  <Data value="null"/>
+                </Column>
+                <Column editable="true" title="" type="java.lang.Integer">
+                  <Data value="null"/>
+                  <Data value="7"/>
+                  <Data value="null"/>
+                  <Data value="6"/>
+                  <Data value="null"/>
+                  <Data value="3"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="8"/>
+                </Column>
+                <Column editable="true" title="" type="java.lang.Integer">
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="4"/>
+                  <Data value="7"/>
+                  <Data value="9"/>
+                  <Data value="2"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                </Column>
+                <Column editable="true" title="" type="java.lang.Integer">
+                  <Data value="3"/>
+                  <Data value="9"/>
+                  <Data value="null"/>
+                  <Data value="8"/>
+                  <Data value="5"/>
+                  <Data value="1"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                </Column>
               </Table>
             </Property>
             <Property name="autoResizeMode" type="int" value="4"/>
@@ -185,7 +275,6 @@
               <Value id="ON_OR_INSERT_ROWS"/>
             </Property>
             <Property name="fillsViewportHeight" type="boolean" value="true"/>
-            <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
             <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="40" green="40" id="darkGray" palette="1" red="40" type="palette"/>
             </Property>
@@ -193,7 +282,7 @@
               <Dimension value="[135, 300]"/>
             </Property>
             <Property name="rowHeight" type="int" value="36"/>
-            <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
+            <Property name="surrendersFocusOnKeystroke" type="boolean" value="true" postCode="sudokuGridRenderer renderer = new sudokuGridRenderer();&#xa;        Class column = jSudokuGrid.getColumnClass(1);&#xa;        jSudokuGrid.setDefaultRenderer(column, renderer);"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
