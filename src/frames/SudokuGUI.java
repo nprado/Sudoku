@@ -11,10 +11,13 @@
 
 package frames;
 
+import java.awt.Color;
+
 /**
  *
  * @author daniel
  */
+
 public class SudokuGUI extends javax.swing.JFrame {
 
     /** Creates new form SudokuGUI */
@@ -37,26 +40,26 @@ public class SudokuGUI extends javax.swing.JFrame {
         SudokuMenu = new javax.swing.JMenu();
         Limpar = new javax.swing.JMenuItem();
         Resolver = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        ResolverPassos = new javax.swing.JMenuItem();
         Help = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        Sobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jSudokuGrid.setAutoCreateRowSorter(true);
         jSudokuGrid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        jSudokuGrid.setFont(new java.awt.Font("Liberation Serif", 1, 36)); // NOI18N
+        jSudokuGrid.setFont(new java.awt.Font("Liberation Serif", 1, 36));
         jSudokuGrid.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, new Integer(7), null, new Integer(4), null, null, null, new Integer(3)},
+                {null, null, null, new Integer(6), null, null, new Integer(7), null, new Integer(9)},
+                {null, null, null, new Integer(8), new Integer(3), null, null, new Integer(4), null},
+                {new Integer(4), new Integer(5), new Integer(1), null, new Integer(2), null, new Integer(6), new Integer(7), new Integer(8)},
+                {new Integer(6), new Integer(2), null, null, null, null, null, new Integer(9), new Integer(5)},
+                {new Integer(9), new Integer(7), new Integer(8), null, new Integer(6), null, new Integer(3), new Integer(2), new Integer(1)},
+                {null, new Integer(9), null, null, new Integer(5), new Integer(8), null, null, null},
+                {new Integer(1), null, new Integer(2), null, null, new Integer(3), null, null, null},
+                {new Integer(3), null, null, null, new Integer(9), null, new Integer(8), null, null}
             },
             new String [] {
                 "", "", "", "", "", "", "", "", ""
@@ -74,11 +77,13 @@ public class SudokuGUI extends javax.swing.JFrame {
         jSudokuGrid.setColumnSelectionAllowed(true);
         jSudokuGrid.setDropMode(javax.swing.DropMode.ON_OR_INSERT_ROWS);
         jSudokuGrid.setFillsViewportHeight(true);
-        jSudokuGrid.setFocusTraversalPolicyProvider(true);
         jSudokuGrid.setGridColor(java.awt.Color.darkGray);
         jSudokuGrid.setMinimumSize(new java.awt.Dimension(135, 300));
         jSudokuGrid.setRowHeight(36);
         jSudokuGrid.setSurrendersFocusOnKeystroke(true);
+        sudokuGridRenderer renderer = new sudokuGridRenderer();
+        Class column = jSudokuGrid.getColumnClass(1);
+        jSudokuGrid.setDefaultRenderer(column, renderer);
         jSudokuGrid.setUpdateSelectionOnSort(false);
         jSudokuGrid.setVerifyInputWhenFocusTarget(false);
         jSudokuGrid.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -109,21 +114,21 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
         SudokuMenu.add(Resolver);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem3.setText("Resolver mostrando passos");
-        SudokuMenu.add(jMenuItem3);
+        ResolverPassos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        ResolverPassos.setText("Resolver mostrando passos");
+        SudokuMenu.add(ResolverPassos);
 
         jSudokuMenuBar.add(SudokuMenu);
 
         Help.setText("Help");
 
-        jMenuItem4.setText("Sobre");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        Sobre.setText("Sobre");
+        Sobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                SobreActionPerformed(evt);
             }
         });
-        Help.add(jMenuItem4);
+        Help.add(Sobre);
 
         jSudokuMenuBar.add(Help);
 
@@ -149,9 +154,9 @@ public class SudokuGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void SobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SobreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_SobreActionPerformed
 
     private void jSudokuGridKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSudokuGridKeyPressed
         // TODO add your handling code here:
@@ -160,31 +165,68 @@ public class SudokuGUI extends javax.swing.JFrame {
 
     private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
         // TODO add your handling code here:
+        
         for(int i=0; i< 9 ; i++){
             for(int j = 0; j< 9; j++){
                 jSudokuGrid.setValueAt(null, i, j);
             }
         }
+        jSudokuGrid.setFont(new java.awt.Font("Liberation Serif", 1, 36));
     }//GEN-LAST:event_LimparActionPerformed
+    private Integer[][] getSudokuMatrix(){
+        Integer m[][] = new Integer[9][9] ;
 
+        for (int i = 0; i<9 ; i++){
+            for (int j=0; j<9 ; j++){
+                if(jSudokuGrid.getValueAt(i, j) != null) {
+                    m[i][j] =  (Integer)jSudokuGrid.getValueAt(i, j);
+                }else {
+                    m[i][j] = 0;
+                }
+                
+            }
+        }
+        return m;
+    }
+    private void printSol(Integer m[][]){
+        for (int i = 0; i< 9 ; i++){
+            for(int j = 0 ; j<9; j++){
+                jSudokuGrid.setValueAt(m[i][j], i, j);
+            }
+        }
+    }
+    
     private void ResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResolverActionPerformed
         // TODO add your handling code here:
 
         // Exemplo de como chamar o metodo Resolver
-        // nesse caso ao clicar em resolver o grid sera pintado de azul
-        // e as celulas sao preenchidas com um exemplo
-        
-
-        jSudokuGrid.setGridColor(java.awt.Color.BLUE);
-        /*sudokusolver*/
+       /*
         for (int i = 0; i < 9 ; i++){
             for (int j=0 ; j< 9; j++){
-                if (jSudokuGrid.getValueAt(i, j) == null )
-                    jSudokuGrid.setValueAt(i + 1, i, j);
+                if (jSudokuGrid.getValueAt(i, j) == null ){
+                    jSudokuGrid.setValueAt(i+1, i, j);
+                }
             }
         }
+        * 
+        */
+        Integer sm[][] = getSudokuMatrix();
+        System.out.println(sm[0][0]);
+        System.out.println(" Adcionou matriz");
+        SudokuSolver resolvido = new SudokuSolver(sm);
+        System.out.println(" criou resolvido");
+        resolvido.solver(0,0);
+        System.out.println(" resolveu");
         
-
+        for (int i = 0 ; i < 9 ; i++){
+            for (int j = 0 ; j<9 ; j++){
+                System.out.println(sm[i][j]);
+            }
+        }
+         
+        printSol(resolvido.getSudoku());
+        
+       
     }//GEN-LAST:event_ResolverActionPerformed
 
     /**
@@ -202,12 +244,14 @@ public class SudokuGUI extends javax.swing.JFrame {
     private javax.swing.JMenu Help;
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JMenuItem Resolver;
+    private javax.swing.JMenuItem ResolverPassos;
+    private javax.swing.JMenuItem Sobre;
     private javax.swing.JMenu SudokuMenu;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jSudokuGrid;
     private javax.swing.JMenuBar jSudokuMenuBar;
     // End of variables declaration//GEN-END:variables
 
+
+    
 }
